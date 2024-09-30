@@ -34,6 +34,7 @@ erDiagram
     ALUNO{
         int codigo
         string status
+        list notas
         %%monitor ou não
     }
    
