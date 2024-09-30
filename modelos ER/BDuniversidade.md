@@ -26,16 +26,56 @@ erDiagram
 
     %% Entidade componente curricular
     COMP_CURRICULAR{
-        int codigo
-        string tipo
+        int id_componente
+        int codigo_componente
+        string nome_componente
+        string tipo_componente
     }
 
     %% Entidade aluno
     ALUNO{
-        int codigo
+        int matricula
+        string nome_discente
+        data ano_ingresso
         string status
         list notas
         %%monitor ou não
+    }
+
+    %% Entidade curso
+    CURSO{
+        int id_curso
+        int codigo_curso
+        string nome_curso
+    }
+
+    %% Entidade docente
+    DOCENTE{
+        string nome_docente
+        int siape
+        string sexo
+        string formacao
+        string vinculo
+    }
+
+    %% Entidade disciplina
+    DISCIPLINA{
+        int id_turma
+        int id_curso
+        string id_discente
+    }
+
+    %% Entidade turma
+    TURMA{
+        int id_turma
+        string codigo_turma
+        int siape
+        int id_componente
+        string campus_turma
+        data inicio
+        data fim
+        int ano
+        int periodo
     }
    
     %% Relacionamentos
