@@ -26,15 +26,24 @@ erDiagram
         list com_tecnica
     }
 
+    %% Entidade Escalacao
+    ESCALACAO{
+        data data_hora
+    }
+
+    %% Entidade de ligação jogador escalado
+    jogador_escalado{
+        int numero_camisa
+        string situacao
+        string status
+    }
+
     %% Entidade Jogador
     JOGADOR {
         int codigo
         string nome
         string apelido
         string posicao
-        int numero_camisa
-        string situacao
-        string status
     }
 
     %% Entidade Membro da Comissão
@@ -50,22 +59,27 @@ erDiagram
         string estadio
         date data
         string endereco
+        string vencedor
+        string situacao
     }
 
     %% Entidade Gol
     GOL {
-        int cod_jogador
-        int cod_partida
+        data minuto
+        string tempo
     }
 
     %% Relacionamentos
-    CAMPEONATO ||--o{ EQUIPE : tem
-    CAMPEONATO ||--o{ PARTIDA : possui
-    PARTIDA ||--|{ EQUIPE : disputa_de
+    CAMPEONATO o{--|{ EQUIPE : tem
+    CAMPEONATO ||--|{ PARTIDA : possui
     EQUIPE ||--o{ JOGADOR : escala
     EQUIPE ||--o{ COM_TECNICA : escala
     PARTIDA ||--o{ GOL : tem
     JOGADOR ||--o{ GOL : marca
+    PARTIDA || -- |{ESCALACAO: pardida_escala
+    JOGADOR |{ -- o{ESCALACAO: jogador_escalado
+    EQUIPE || -- o{ESCALACAO: equipe_escalada
+    COM_TECNICA || -- o{ESCALACAO: com_tecnica_escalada
 
 ```
 
